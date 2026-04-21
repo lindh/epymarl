@@ -1,0 +1,52 @@
+# ============================================================
+# EPyMARL + LBF + WandB 演習環境 (Part 2)
+# 動作確認済みバージョン(2026-04-22, macOS Apple Silicon / Python 3.10)
+# ============================================================
+#
+# 使い方:
+#   conda create -n marl python=3.10 -y
+#   conda activate marl
+#   pip install -r requirements-pinned.txt
+#   pip install git+https://github.com/uoe-agents/smaclite.git
+#   git clone https://github.com/uoe-agents/epymarl.git
+#   wandb login
+#
+# smaclite は PyPI に未公開のため別途 GitHub から install が必要
+# ------------------------------------------------------------
+
+# --- PyTorch (CPU 版) ---
+torch==2.2.0
+torchvision==0.17.0
+
+# --- sacred は pkg_resources を使うため setuptools を 81 未満に固定 ---
+setuptools<81
+
+# --- EPyMARL のコア依存 ---
+sacred==0.8.7
+PyYAML==5.3.1
+numpy<2.0              # torch 2.2.0 は NumPy 1.x でビルド
+matplotlib
+snakeviz
+pygame==2.6.1
+imageio
+"pymongo<4.0"          # sacred 0.8 との互換
+
+# --- gymnasium ecosystem (EPyMARL v2 系は gymnasium を使う) ---
+gymnasium==1.2.3
+Farama-Notifications
+
+# --- Level-Based Foraging (LBF) 環境 ---
+lbforaging==2.0.0
+
+# --- WandB (クラウドログ) ---
+wandb==0.17.8
+
+# --- smaclite 依存 (scikit-learn 経由で joblib などが入る) ---
+scikit-learn
+Rtree==1.0.0
+
+# --- その他ユーティリティ (EPyMARL の暗黙依存で落とし穴になりがち) ---
+docopt-ng
+munch
+jsonpickle
+tensorboard-logger     # tensorboard 自体は不要だが EPyMARL が import する
