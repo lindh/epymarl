@@ -29,7 +29,7 @@ matplotlib
 snakeviz
 pygame==2.6.1
 imageio
-"pymongo<4.0"          # sacred 0.8 との互換
+pymongo<4.0          # sacred 0.8 との互換
 
 # --- gymnasium ecosystem (EPyMARL v2 系は gymnasium を使う) ---
 gymnasium==1.2.3
